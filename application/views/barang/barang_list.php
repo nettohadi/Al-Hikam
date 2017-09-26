@@ -1,6 +1,6 @@
-<div id="add-menu" onclick="goTo('<?php echo site_url('barang/add')?>')"><span class="add-ico"></span></div>
+<div id="add-menu" onclick="goTo('<?php echo site_url('barang/add')?>')">
+  <span class="add-ico"></span></div>
 <div id="content">    
-
 			<?php foreach($daftarBarang as $barang):?>                        
           <div class="item-row" id="<?php echo $barang->kode ?>" deleteUrl="<?php echo site_url('barang/delete.html')?>">
             <div class="item-row-nama">
