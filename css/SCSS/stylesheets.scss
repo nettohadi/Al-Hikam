@@ -1,0 +1,654 @@
+/*--Variable Section--*/
+$theme_color: #009999;
+$hover_theme_color:	lightgrey;
+$border_style_color: 1px solid lightgrey;
+$font_color: white;
+$item_font_color: #686060;
+$home_icon: "home.png";
+$add_icon: "add_data.png";
+$save_icon: "save.png";
+$delete_icon: "delete.png";
+$edit_icon: "edit.png";
+$detail_icon: "detail.png";
+
+
+/*--Mixin Section--*/
+@mixin set-icon($icon_name, $icon_size_width, $icon_size_height:$icon_size_width){
+	background-image:url("../images/" + $icon_name);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+	width: $icon_size_width;
+	height: $icon_size_height;
+}
+
+
+body{
+	background-color: #ddd; 
+	font-family: tahoma;
+}
+
+#topNav {
+	width: 100%; 	
+	overflow: hidden;
+	background-color: $theme_color;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+	height: 53px;
+	box-shadow: 1px 2px 2px #888888;
+}
+
+.home{
+	@include set-icon($home_icon,20px);
+	margin: auto;
+	display: block;
+	margin-top: 33%;
+}
+
+#title-bar{
+	display: inline-block; 
+	color: $font_color;	
+	display: inline-block;	
+	padding-top: 15px;
+	width: 75%;
+	clear: both;
+	font-size: 19px;
+	min-height: inherit;
+	overflow:hidden;
+	text-align: center;	
+}
+
+#title-bar-text{
+	display: inline-block;
+	height: inherit;
+}
+
+.add-ico{
+	@include set-icon($add_icon,20px);
+	margin: auto;
+	display: block;
+	margin-top: 33%;
+}
+
+.save-ico{
+	@include set-icon($save_icon,32px);
+	display: inline-block;			
+}
+
+.delete-ico{
+	@include set-icon($delete_icon,24px);		
+}
+
+.edit-ico{
+	@include set-icon($edit_icon,24px);
+}
+
+.detail-ico{
+	@include set-icon($detail_icon,24px);	
+}
+
+.edit-ico, .delete-ico, .detail-ico{
+	display: block;				
+	margin:auto;	
+	margin-top:5px;
+}
+
+.edit-menu, .delete-menu, .detail-menu{
+	display: inline-block;
+	float: right;
+	border-radius: 40px;	
+	width: 38px;
+	height: 38px;		
+	margin-right: 0px;
+}
+
+.edit-menu:hover, .delete-menu:hover, #add-menu:hover, .detail-menu:hover{
+	background-color: $hover_theme_color;
+}
+
+ #save-menu, #menu{
+	padding-left: 10px;
+	padding-right: 10px;
+  padding-top: 10px;
+	text-align: center;
+}
+
+#add-menu{
+	width: 64px;
+	height: 64px;		
+	display: block;
+	z-index: 10;
+	position: fixed;
+	right: 15px;
+	background-color: $theme_color;
+	border-radius: 40px;
+	box-shadow: 1px 2px 4px #888888; 
+	border: 0.5px solid white;
+	text-align: right;		
+	bottom: 38px;
+}
+
+.con-search{
+	  float:right;
+	  font-size: 15px;
+	  color: white;
+	  height: 30px;		
+	  width: 90%;
+	  display: inline-block;
+	  box-sizing: border-box;	
+	  border-top: 0px solid white;
+	  border-left: 0px solid white;
+	  border-right: 0px solid white;
+	  border-bottom: 1px solid white;
+	  background-color: transparent;
+}
+
+
+
+#search-input{	
+  margin-top: 11px;
+  float: right;
+  width: 75%; 
+  display: none;	
+}
+
+.close-search-ico{
+	@include set-icon("close.png",13px);
+	display: inline-block;	
+	float:right;
+	margin-top: 12px;
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+
+#search-menu{
+	margin-top:11px;
+ 	float: right;
+	width: 32px;
+	height: 32px;
+	margin-right: 7px;
+	display: inline-block;
+}
+
+.search-ico{
+	@include set-icon("search_data.png",20px);
+	display: block;	
+	float:right;
+	margin-top: 6px;
+	margin-right: 4px;	
+	cursor: pointer;
+}
+
+#linksMenu{
+	width: 80%;
+}
+
+#mainContainer {	
+	overflow: auto;
+	display:flex;
+	margin-top: 40px;
+}
+
+#content{	
+	width: 100%;	
+	overflow: auto;
+	max-width: 550px;
+	margin: auto;
+	background-color: transparent;
+}
+
+.menu-box{
+	text-align: center;
+	vertical-align: center;
+	display: inline-block;
+	float: left;
+	height: 110px;
+	width: 30.5%;
+	font-size: 1em;
+	/*font-family: tahoma;*/
+	padding: 3px;
+}
+
+.menu-box:hover{
+	background-color: lightgray;
+}
+
+.menu-box-ico{
+	background-repeat: no-repeat;
+	width: 80px;
+	height: 64px;
+	display: inline-block;	
+}
+
+#menu-container a{
+	outline: none;
+	color: black;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#data-barang-ico{
+	background-image:url("../images/data-barang.png");	
+}
+
+#data-jenis-barang-ico{
+	background-image:url("../images/data-jenis-barang.png");	
+}
+#data-supplier-ico{
+	background-image:url("../images/data-supplier.png");	
+}
+
+#data-satuan-barang-ico{
+	background-image:url("../images/data-satuan-barang.png");	
+}
+
+#penjualan-ico{
+	background-image:url("../images/penjualan.png");	
+}
+
+#pembelian-ico{
+	background-image:url("../images/pembelian.png");	
+}
+
+#hutang-ico{
+	background-image:url("../images/hutang.png");	
+}
+
+#piutang-ico{
+	background-image:url("../images/piutang.png");	
+}
+
+#modal-ico{
+	background-image:url("../images/modal.png");	
+}
+
+#biaya-lain-ico{
+	background-image:url("../images/biaya-lain.png");	
+}
+
+.div-label{
+	margin-top: 10px;
+}
+
+tr {
+	cursor: pointer;
+}
+
+.con-label{
+	font-size: 19px;	
+}
+
+.con-text, .con-currency, .con-number,.con-percent{	    		  
+	  padding: 3px;		
+	  display: block;
+	  box-sizing: border-box;	
+	  border-top: 0px solid white;
+	  border-left: 0px solid white;
+	  border-right: 0px solid white;
+	  border-bottom: 1px solid black;
+	  font-size: 16px;
+}
+
+
+.con-select, .con-date{	  
+	  font-size: 15px;
+	  padding: 3px;	
+	  display: block;	  	  
+	  box-sizing: border-box;
+	  border-top: 0px solid white;
+	  border-left: 0px solid white;
+	  border-right: 0px solid white;
+	  border-bottom: 1px solid black;
+	  font-size: 16px;
+}
+
+.form-container{
+	width: 90%; 
+	max-width: 300px; 
+	margin: auto; 
+	border: solid lightgrey 0.5px; 
+	padding: 15px;
+	background-color: white;
+}
+
+.con-button:hover, .link-button-style:hover{
+	background-color: darkblue;
+}
+
+.link-button-style, .con-button{
+	font-family: tahoma;
+	font-size: 1em;
+	display: inline-block;	
+	color: #FFF;
+	text-decoration: none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+  	background-color: #0095ff;
+  	border-color: black;
+  //box-shadow: inset 0 1px 0 #66bfff;
+	margin-top: 5px;	
+	margin-bottom: 10px;
+	//font-weight: bold;
+	text-align: center;
+	vertical-align: center;
+	border-radius: 2px;
+  	border: 1px solid transparent;
+	cursor: pointer;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+.on-progress, .on-success, .on-fail{	
+	height: 50px;
+	padding: 5px;
+	width: 200px;
+	text-align: center;
+	font-size: 18px;	
+}
+
+.on-progress{
+	background-color: white;
+	border: 2px solid black;
+}
+.on-fail{
+	background-color: lightpink;
+	border: 2px solid red;
+}
+
+.on-success{
+	background-color: lightgreen;
+	border: 2px solid green;
+}
+
+#optionDialog{
+	background-color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left:1px;
+	padding-right:1px;
+	width: 200px;
+	border-radius:2px;
+}
+
+.link-menu-style{
+	color:black;
+	text-decoration: none;	
+	display: block;
+	width:100%;	
+	height: 30px;
+	padding-top: 10px;
+}
+
+.link-menu-style:hover{
+	color:white;	
+	background-color: darkgrey;	
+}
+
+.div-underline{
+	border-bottom-color: #000; 
+	border-bottom-width: 0.5px;	
+	border-bottom-style:  solid;
+	//padding-bottom: 6px;
+	width: 100%;
+	box-sizing: border-box;
+	text-align: center;		
+	//padding-top: 10px;
+}
+
+
+.item-row{
+	margin-bottom: 10px;
+	background-color: white;
+	box-shadow: 0px 3px 5px #888888; 
+	display: block;
+	width:99.9%;
+	overflow:hidden;
+}
+
+
+
+.kode-ico{
+	@include set-icon("kode.png",14px,12px);
+	background-image:url("../images/kode.png");
+	display: inline-block;				
+}
+
+
+.harga-ico{
+	@include set-icon("harga_white.png",20px);	
+	display: inline-block;				
+}
+
+.item-row-nama{
+	display: block;
+	width: 100%;
+	clear: both;
+	font-size: 22px;	
+	min-height: 29px;
+	overflow:hidden;
+	text-align: justify;
+	color: $item_font_color;
+	padding-left:5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.supplier-ico{
+	@include set-icon("supplier.png",16px);
+	display: inline-block;				
+}
+
+.jenis-ico{
+	@include set-icon("jenis.png",16px);
+	display: inline-block;				
+}
+
+.item-col-qty{
+	float:left;
+	display:inline-block;
+	color:#686060;
+	font-size: 15px;
+	width: 40%;
+	text-align: right;			
+}
+
+.qty-ico{
+	@include set-icon("qty.png",14px);
+	display: inline-block;				
+}
+
+.item-row-kode-supplier-qty-jenis{
+	border-bottom: $border_style_color;
+	border-top: $border_style_color;
+	overflow: hidden;	
+	min-height: 63px;
+}
+
+.item-col-kode-supplier{
+	display: inline-block;
+	float: left;		
+	border-right:$border_style_color;
+	min-height:inherit;				
+}
+
+.item-row-kode{
+ 	display: block;		
+	min-height: 21px;
+	clear: both;
+}
+
+.item-col-kode-ico{
+	display: inline-block;
+	float: left;	
+	width: 10%;	
+	min-height: inherit;			
+}
+
+
+.item-col-kode{
+	display: inline-block;
+	float: left;		
+	min-height: inherit;	
+}
+
+.item-row-supplier{
+ 	display: block;	
+	width: 100%;
+	min-height: 21px;
+	clear: both;	
+}
+
+
+.item-col-supplier-ico{
+	display: inline-block;
+	float: left;	
+	width: 10%;	
+	min-height: inherit;	
+}
+
+.item-col-supplier{
+	display: inline-block;
+	float: left;		
+	min-height: inherit;
+	overflow: hidden;
+	text-align: left;
+	color:$theme_color;
+	width: 87%;
+}
+
+.item-col-qty-jenis{
+	display: inline-block;
+	float: left;			
+	padding-left: 5px;		
+	min-height:inherit;	
+}
+
+.item-row-qty{
+  	display: block;	
+	width: 100%;
+	min-height: 21px;
+	clear: both;
+}
+
+
+.item-col-qty-ico{
+	display: inline-block;
+	float: left;	
+	width: 10%;	
+	min-height: inherit;	
+}
+
+.item-col-qty{
+	display: inline-block;
+	float: left;		
+	min-height: inherit;
+	overflow: hidden;
+	text-align: left;	
+}
+
+
+.item-row-jenis{
+  	display: block;	
+	width: 100%;
+	min-height: 21px;
+	clear: both;
+}
+
+
+.item-col-jenis-ico{
+	display: inline-block;
+	float: left;	
+	width: 10%;	
+	min-height: inherit;	
+}
+
+.item-col-jenis{
+	display: inline-block;
+	float: left;			
+	min-height: inherit;
+	overflow: hidden;
+	text-align: left;
+}
+
+.item-row-edit-hapus-harga{
+	display: block;	
+	width: 100%;
+	min-height: 35px;	
+	clear: both;
+	padding-bottom: 4px;
+}
+
+.item-col-edit-hapus{
+	display: inline-block;
+	float: right;	
+	min-height: inherit;
+	padding-top: 5px;	
+}
+
+.item-col-harga-me{
+	display: inline-block;
+	float: left;			
+	min-height: inherit;
+	padding-top: 6px;
+	padding-left: 5px;
+	border-right:$border_style_color;
+}
+
+.item-col-harga-ico{
+	display: none;
+	float: left;	
+	width: 14%;	
+	min-height: inherit;	
+}
+
+.item-col-harga{
+	display: inline-block;
+	float: left;	
+	width: 85%;	
+	min-height: inherit;
+	overflow: hidden;
+	text-align: left;
+	font-size: 19px;		
+	color: #686060;
+	padding-top: 5px;
+}
+
+.item-col-kode-ico, 
+.item-col-supplier-ico,
+.item-col-qty-ico,
+.item-col-jenis-ico{
+	margin-right: 4px;
+}
+
+.item-col-kode,
+.item-col-qty,
+.item-col-jenis{
+	width: 87%;	
+	color: $item_font_color;
+}
+
+.item-col-kode-supplier,
+.item-col-qty-jenis,
+.item-col-edit-hapus,
+.item-col-harga-me{
+	width:48%;
+	//margin-left: 5px;
+	padding-top: 4px;
+}
+
+.item-col-kode-supplier,
+.item-col-edit-hapus{
+	margin-left: 5px;
+}
