@@ -20,7 +20,7 @@ class barang_model extends CI_Model
 
 
 
-	public function getAllBarang()
+	public function getAllBarang($nama="")
 
 	{
 
@@ -44,7 +44,9 @@ class barang_model extends CI_Model
               on barang.kode_jenis = jenis_barang.kode
               INNER JOIN satuan 
               on barang.kode_satuan = satuan.kode";
-
+      if ($nama!='') {
+        $query .= " WHERE barang.nama LIKE '%".$nama."%'";
+      }
 
 
         $dataSet = $this->db->query($query);
@@ -109,8 +111,9 @@ class barang_model extends CI_Model
                       $this->input->post('tgl_expired_bln')."-".
                       $this->input->post('tgl_expired_tgl');
 
-      $nama = strtoupper($this->input->post('nama'));
-      $merk = ucfirst($this->input->post('merk'));
+      $nama = ucwords($this->input->post('nama'));
+      $merk = ucwords($this->input->post('merk'));
+      $supplier = ucwords($this->input->post('supplier'));
 
       $query = "UPDATE `barang` SET        
 
@@ -134,7 +137,7 @@ class barang_model extends CI_Model
 
         `tgl_expired`='{$tgl_expired}',        
 
-        `supplier`='{$this->input->post('supplier')}'        
+        `supplier`='{$supplier}'        
 
           WHERE
 
@@ -156,22 +159,27 @@ class barang_model extends CI_Model
 
 	  $newUrutan = $this->kode_model->getNewUrutan($kodeJenis);
 
-      $kodeBarang = $kodeJenis.$newUrutan;
+    $kodeBarang = $kodeJenis.$newUrutan;
 
       
 
-      $harga_beli = str_replace('.', '', $this->input->post('harga_beli'));
+    $harga_beli = str_replace('.', '', $this->input->post('harga_beli'));
 
-      $harga_jual = str_replace('.', '', $this->input->post('harga_jual'));
+    $harga_jual = str_replace('.', '', $this->input->post('harga_jual'));
 
-      $diskon = str_replace('.', '', $this->input->post('diskon'));
+    $diskon = str_replace('.', '', $this->input->post('diskon'));
 
-      $qty_diskon = str_replace('.', '', $this->input->post('qty_diskon'));
+    $qty_diskon = str_replace('.', '', $this->input->post('qty_diskon'));
 
-      $qty = str_replace('.', '', $this->input->post('qty'));
+    $qty = str_replace('.', '', $this->input->post('qty'));
 
-      $nama = strtoupper($this->input->post('nama'));
-      $merk = ucfirst($this->input->post('merk'));
+    $nama = ucwords($this->input->post('nama'));
+    $merk = ucwords($this->input->post('merk'));
+    $supplier = ucwords($this->input->post('supplier'));
+
+    $tgl_expired =  $this->input->post('tgl_expired_thn')."-".
+                    $this->input->post('tgl_expired_bln')."-".
+                    $this->input->post('tgl_expired_tgl');
 
 	  $queryBarang = "INSERT INTO `barang`(     
 
@@ -221,9 +229,9 @@ class barang_model extends CI_Model
 
       '{$qty}',
 
-      '{$this->input->post('tgl_expired')}'),
+      '{$tgl_expired}',
 
-      '{$this->input->post('supplier')}')";
+      '{$supplier}')";
 
       
 

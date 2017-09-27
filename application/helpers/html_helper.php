@@ -21,7 +21,7 @@
 
 			$text.= '<select name="'.$name.'_tgl" style="width: 40px; display:inline-block;" class="con-date">';			
 
-			for($i = 1; $i <=31; $i++){
+			for($i = 0; $i <=31; $i++){
 				if (strlen($i)!=2) {$val = "0".$i;}else{$val=$i;}
 				if ($val == substr($value, 0, 2)) {
 					$text.='<option value="'.$val.'" selected="selected">'.$val.'</option>';
@@ -40,7 +40,7 @@
 
 
 
-			for($i = 1; $i <=12; $i++){
+			for($i = 0; $i <=12; $i++){
 
 				if (strlen($i)!=2) {$val = "0".$i;}else{$val=$i;}
 				if ($val == substr($value, 3, 2)) {
@@ -58,6 +58,8 @@
 			$text.= '<label style="display:inline-block;margin-right:5px;">Thn</label>';
 
 			$text.='<select name="'.$name.'_thn" style="width: 70px;display:inline-block;" class="con-date">';
+
+			$text.='<option value="00">0000</option>';	
 
 			for($i=date("Y");$i<=(date("Y") + 10);$i++){
 

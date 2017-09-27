@@ -592,3 +592,10 @@ tr {
 .item-col-kode-supplier,
 .item-col-edit-hapus {
   margin-left: 5px; }
+
+.no-data {
+  margin: auto;
+  color: #686060;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center; }

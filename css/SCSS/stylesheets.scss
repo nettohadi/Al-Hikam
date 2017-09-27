@@ -10,6 +10,7 @@ $save_icon: "upload_data.png";
 $delete_icon: "delete.png";
 $edit_icon: "edit.png";
 $detail_icon: "detail.png";
+$font_color_no_data: $item_font_color;
 
 
 /*--Mixin Section--*/
@@ -651,4 +652,12 @@ tr {
 .item-col-kode-supplier,
 .item-col-edit-hapus{
 	margin-left: 5px;
+}
+
+.no-data{
+	margin:auto;
+	color: $font_color_no_data;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
 }
