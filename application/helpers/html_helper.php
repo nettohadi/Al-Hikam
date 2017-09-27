@@ -10,8 +10,9 @@
 		}
 
 
-		function input_date ($label, $name, $width, $value="00-00-0000"){
-
+		function input_date_YMD_to_DMY ($label, $name, $width, $value="0000-00-00"){
+			$value = YMD_to_DMY($value);
+			
 			$text ='<div class="div-label"><label class="con-label">'.$label.'</label></div>';
 
 			$text.='<div class="div-con" style="width:'.$width.'">';

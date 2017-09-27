@@ -15,7 +15,7 @@
 		<?php echo input_number('QTY DISKON','qty_diskon','100%', $dataBarang[0]->qty_diskon);?>
 		<?php echo input_number('QTY','qty','100%', $dataBarang[0]->qty);?>	
 		<?php echo input_text('SUPPLIER','supplier','100%', $dataBarang[0]->supplier);?>			
-		<?php echo input_date('TANGGAL EXPIRED','tgl_expired','100%', YMD_to_DMY($dataBarang[0]->tgl_expired));?>		
+		<?php echo input_date_YMD_to_DMY('TANGGAL EXPIRED','tgl_expired','100%', $dataBarang[0]->tgl_expired);?>		
 		<?php echo link_button_style('daftar barang',site_url("barang_controller/"),'100%')?>
 	</form>	
 </div>
