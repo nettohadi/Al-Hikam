@@ -1,10 +1,18 @@
 <?php
 
 
+		function YMD_to_DMY($date){
+			$text = substr($date, 8, 2)."-".
+			substr($date, 5, 2)."-".
+			substr($date, 0, 4);
 
-		function input_date ($label, $name, $width){
+			return $text;
+		}
 
-			$text='<div class="div-label"><label class="con-label">'.$label.'</label></div>';
+
+		function input_date ($label, $name, $width, $value="00-00-0000"){
+
+			$text ='<div class="div-label"><label class="con-label">'.$label.'</label></div>';
 
 			$text.='<div class="div-con" style="width:'.$width.'">';
 
@@ -13,8 +21,13 @@
 			$text.= '<select name="'.$name.'_tgl" style="width: 40px; display:inline-block;" class="con-date">';			
 
 			for($i = 1; $i <=31; $i++){
-
-				$text.='<option value="'.$i.'">'.$i.'</option>';
+				if (strlen($i)!=2) {$val = "0".$i;}else{$val=$i;}
+				if ($val == substr($value, 0, 2)) {
+					$text.='<option value="'.$val.'" selected="selected">'.$val.'</option>';
+				}
+				else{
+					$text.='<option value="'.$val.'">'.$val.'</option>';	
+				}
 
 			}
 
@@ -28,8 +41,13 @@
 
 			for($i = 1; $i <=12; $i++){
 
-				$text.='<option value="'.$i.'">'.$i.'</option>';
-
+				if (strlen($i)!=2) {$val = "0".$i;}else{$val=$i;}
+				if ($val == substr($value, 3, 2)) {
+					$text.='<option value="'.$val.'" selected="selected">'.$val.'</option>';
+				}
+				else{
+					$text.='<option value="'.$val.'">'.$val.'</option>';	
+				}
 			}
 
 
@@ -42,7 +60,12 @@
 
 			for($i=date("Y");$i<=(date("Y") + 10);$i++){
 
-				$text.='<option value="'.$i.'">'.$i.'</option>';
+				if ($i == (int)(substr($value, 6, 4))) {
+					$text.='<option value="'.$i.'" selected="selected">'.$i.'</option>';
+				}
+				else{
+					$text.='<option value="'.$i.'">'.$i.'</option>';	
+				}
 
 			}
 

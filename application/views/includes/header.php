@@ -12,8 +12,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('css/responsive.dataTables.css');?>"/>
 
 
-    <link rel="stylesheet" type="text/css" href="<?php echo site_url('css/popModal.min.css');?>"/>
-    
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('css/popModal.min.css');?>"/>    
 
     <!--  -->
 

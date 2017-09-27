@@ -6,7 +6,7 @@ $font_color: white;
 $item_font_color: #686060;
 $home_icon: "home.png";
 $add_icon: "add_data.png";
-$save_icon: "save.png";
+$save_icon: "upload_data.png";
 $delete_icon: "delete.png";
 $edit_icon: "edit.png";
 $detail_icon: "detail.png";
@@ -25,7 +25,7 @@ $detail_icon: "detail.png";
 
 body{
 	background-color: #ddd; 
-	font-family: tahoma;
+	font-family: arial;
 }
 
 #topNav {
@@ -293,15 +293,15 @@ tr {
 }
 
 
-.con-select, .con-date{	  
+.con-select{	  
 	  font-size: 15px;
 	  padding: 3px;	
 	  display: block;	  	  
 	  box-sizing: border-box;
-	  border-top: 0px solid white;
+/*	  border-top: 0px solid white;
 	  border-left: 0px solid white;
 	  border-right: 0px solid white;
-	  border-bottom: 1px solid black;
+	  border-bottom: 1px solid black;*/
 	  font-size: 16px;
 }
 
@@ -434,15 +434,15 @@ tr {
 .item-row-nama{
 	display: block;
 	width: 100%;
-	clear: both;
-	font-size: 22px;	
+	clear: both;	
+	font-size: 21px;	
 	min-height: 29px;
 	overflow:hidden;
 	text-align: justify;
-	color: $item_font_color;
+	color: black;	
 	padding-left:5px;
 	padding-top: 4px;
-	padding-bottom: 4px;
+	padding-bottom: 4px;	
 }
 
 .supplier-ico{

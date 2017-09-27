@@ -4,7 +4,7 @@
 			<?php foreach($daftarBarang as $barang):?>                        
           <div class="item-row" id="<?php echo $barang->kode ?>" deleteUrl="<?php echo site_url('barang/delete.html')?>">
             <div class="item-row-nama">
-                <?php echo strtoupper($barang->nama) ?>
+                <?php echo ucfirst($barang->nama) ?>
             </div>
             <div class="item-row-kode-supplier-qty-jenis">
               <div class="item-col-kode-supplier">

@@ -2,7 +2,7 @@
 /*--Mixin Section--*/
 body {
   background-color: #ddd;
-  font-family: tahoma; }
+  font-family: arial; }
 
 #topNav {
   width: 100%;
@@ -54,7 +54,7 @@ body {
   margin-top: 33%; }
 
 .save-ico {
-  background-image: url("../images/save.png");
+  background-image: url("../images/upload_data.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100% 100%;
@@ -266,15 +266,15 @@ tr {
   border-bottom: 1px solid black;
   font-size: 16px; }
 
-.con-select, .con-date {
+.con-select {
   font-size: 15px;
   padding: 3px;
   display: block;
   box-sizing: border-box;
-  border-top: 0px solid white;
-  border-left: 0px solid white;
-  border-right: 0px solid white;
-  border-bottom: 1px solid black;
+  /*	  border-top: 0px solid white;
+  	  border-left: 0px solid white;
+  	  border-right: 0px solid white;
+  	  border-bottom: 1px solid black;*/
   font-size: 16px; }
 
 .form-container {
@@ -395,11 +395,11 @@ tr {
   display: block;
   width: 100%;
   clear: both;
-  font-size: 22px;
+  font-size: 21px;
   min-height: 29px;
   overflow: hidden;
   text-align: justify;
-  color: #686060;
+  color: black;
   padding-left: 5px;
   padding-top: 4px;
   padding-bottom: 4px; }

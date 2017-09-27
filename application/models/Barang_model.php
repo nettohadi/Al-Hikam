@@ -105,6 +105,10 @@ class barang_model extends CI_Model
 
       $qty = str_replace('.', '', $this->input->post('qty'));	
 
+      $tgl_expired =  $this->input->post('tgl_expired_thn')."-".
+                      $this->input->post('tgl_expired_bln')."-".
+                      $this->input->post('tgl_expired_tgl');
+
       $nama = strtoupper($this->input->post('nama'));
       $merk = ucfirst($this->input->post('merk'));
 
@@ -128,7 +132,7 @@ class barang_model extends CI_Model
 
         `qty`='{$qty}',
 
-        `tgl_expired`='',        
+        `tgl_expired`='{$tgl_expired}',        
 
         `supplier`='{$this->input->post('supplier')}'        
 
