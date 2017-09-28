@@ -15,6 +15,7 @@ class barang_model extends CI_Model
 		parent::__construct();	
 
 		$this->load->model('kode_model');
+    date_default_timezone_set('Asia/Bangkok');
 
 	}
 
@@ -38,15 +39,22 @@ class barang_model extends CI_Model
               satuan.nama AS nama_satuan,
               qty,
               tgl_expired,
-              supplier                    
+              tgl_create,
+              supplier.kode AS kode_supplier, 
+              supplier.nama AS nama_supplier                                   
               FROM barang 
               INNER JOIN jenis_barang 
               on barang.kode_jenis = jenis_barang.kode
               INNER JOIN satuan 
-              on barang.kode_satuan = satuan.kode";
+              on barang.kode_satuan = satuan.kode
+              LEFT OUTER JOIN supplier 
+              on barang.kode_supplier = supplier.kode";
+
       if ($nama!='') {
         $query .= " WHERE barang.nama LIKE '%".$nama."%'";
       }
+
+      $query.= " ORDER BY tgl_create DESC";
 
 
         $dataSet = $this->db->query($query);
@@ -113,7 +121,6 @@ class barang_model extends CI_Model
 
       $nama = ucwords($this->input->post('nama'));
       $merk = ucwords($this->input->post('merk'));
-      $supplier = ucwords($this->input->post('supplier'));
 
       $query = "UPDATE `barang` SET        
 
@@ -137,7 +144,7 @@ class barang_model extends CI_Model
 
         `tgl_expired`='{$tgl_expired}',        
 
-        `supplier`='{$supplier}'        
+        `kode_supplier`='{$this->input->post('supplier')}'        
 
           WHERE
 
@@ -156,12 +163,8 @@ class barang_model extends CI_Model
 	
 
 	  $kodeJenis = $this->input->post('jenis');
-
 	  $newUrutan = $this->kode_model->getNewUrutan($kodeJenis);
-
     $kodeBarang = $kodeJenis.$newUrutan;
-
-      
 
     $harga_beli = str_replace('.', '', $this->input->post('harga_beli'));
 
@@ -174,8 +177,8 @@ class barang_model extends CI_Model
     $qty = str_replace('.', '', $this->input->post('qty'));
 
     $nama = ucwords($this->input->post('nama'));
-    $merk = ucwords($this->input->post('merk'));
-    $supplier = ucwords($this->input->post('supplier'));
+    $merk = ucwords($this->input->post('merk'));    
+    $tgl_create = date('Y-m-d H:i:s');
 
     $tgl_expired =  $this->input->post('tgl_expired_thn')."-".
                     $this->input->post('tgl_expired_bln')."-".
@@ -205,7 +208,9 @@ class barang_model extends CI_Model
 
       `tgl_expired`,
 
-      `supplier`) 
+      `tgl_create`,
+
+      `kode_supplier`) 
 
       VALUES 
 
@@ -231,7 +236,9 @@ class barang_model extends CI_Model
 
       '{$tgl_expired}',
 
-      '{$supplier}')";
+      '{$tgl_create}',
+
+      '{$this->input->post('supplier')}')";
 
       
 

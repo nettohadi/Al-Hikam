@@ -28,8 +28,7 @@
     <script type='text/javascript' src="<?php echo site_url('js/modernizr.custom.min.js');?>"></script>
     <script type='text/javascript' src="<?php echo site_url('js/popModal.min.js');?>"></script>
     <script type='text/javascript' src="<?php echo site_url('js/jquery.plainmodal.min.js');?>"></script>
-    <script type='text/javascript' src="<?php echo site_url('js/jquery.priceformat.min.js');?>"></script>
-   
+    <script type='text/javascript' src="<?php echo site_url('js/jquery.priceformat.min.js');?>"></script>   
     <!--  -->
 
 

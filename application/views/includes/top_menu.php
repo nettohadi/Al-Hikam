@@ -6,8 +6,8 @@
 		<form action="<?php echo site_url("barang/getData.html") ?>" method="post" class="search-ajax-post" enctype="multipart/form-data">
 			<input placeholder="Telusuri" autocomplete="off" type="text" class="con-search"></input><span  onclick="$.hide_search()" class="close-search-ico"></span>
 		</form>
-	</div>	
-	<!-- <div id="delete-menu" class="hide-menu" style="float: right;"><a href="#" title="delete" ><span class="delete-ico"></span></a></div> -->
+	</div>
+	
 	<div id="save-menu" class="hide-menu" style="float: right;"><a href="#" title="add" ><span class="save-ico"></a></span></div>		
 </div>
 <div style="margin-bottom: 60px"></div>

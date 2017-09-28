@@ -18,7 +18,7 @@
                     <span class="supplier-ico"></span>
                   </div>
                   <div class="item-col-supplier">
-                      <?php echo $barang->supplier ?>
+                      <?php echo $barang->nama_supplier ?>
                   </div>
                 </div>
               </div>
