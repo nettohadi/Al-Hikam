@@ -158,6 +158,12 @@
 
 			$text.='<div class="div-con"><select name="'.$name.'"  style="width: '.$width.'" class="con-select">';
 
+			// jika data kosong, isi data kosong dan keluar
+			if ($dataModel == NULL) {				
+				$text.='</select></div>';
+				return $text;
+			}
+
 			foreach ($dataModel as $model) {
 
 				if ($model->{$value} == $selectedValue) {

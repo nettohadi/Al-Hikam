@@ -9,12 +9,6 @@
     <?php endif ?>
 		
 </div>
-<div id="optionDialog" style="display:none">
-	<div class="div-underline"><a id="link-detil" class="link-menu-style" href="#">Lebih Detil ...</a></div>	
-	<div class="div-underline"><a id="link-edit" class="link-menu-style" href="#">Edit</a></div>	
-</div>
-
-
 
 <script>
 
@@ -38,14 +32,14 @@
       $.show_confirm('yakin ingin menghapus data ini ?', 'hapus_ajax()', 'batal()');
   }
 
-  function checkThis(rowId, me){  	
-  	if ($(me).prop('checked') == true) {
-  		$('#'+rowId).addClass('selected-row');			
-  	}  	
-  	else{
-  		$('#'+rowId).removeClass('selected-row');			
-  	}
-  }
+  // function checkThis(rowId, me){  	
+  // 	if ($(me).prop('checked') == true) {
+  // 		$('#'+rowId).addClass('selected-row');			
+  // 	}  	
+  // 	else{
+  // 		$('#'+rowId).removeClass('selected-row');			
+  // 	}
+  // }
 
   function hapus_ajax(){  
 

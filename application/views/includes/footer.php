@@ -1,6 +1,10 @@
 <div id='on-progress-modal' class="my-plain-modal on-progress" style="display: none;" closeAble="yes"></div>
+
 <div id='fail-modal' class="my-plain-modal on-fail" style="display: none;" closeAble="yes"></div>
+
 <div id='success-modal' class="my-plain-modal on-success" style="display: none;" closeAble="yes"></div>
+
+<div id='popUp-modal' class="my-plain-modal my-popUp" style="display: none;" closeAble="yes"></div>
 
 <div id="confirm-modal" class="my-plain-modal" style="display: none;background-color: white;height:50px;padding:50px;" closeAble="no">
 	<div id="confirm-modal-content">
@@ -83,6 +87,19 @@
 			$confirm.plainModal('close');
 		}
 
+        $.show_popUp = function (htmlContent){               
+            var $popUp = $('#popUp-modal');
+            $popUp.plainModal({overlay: {fillColor: '#000', opacity: 0.5}, force: true});
+            $popUp.html(htmlContent);            
+            $popUp.attr('closeAble','no');
+            $popUp.plainModal('open');
+        }
+
+        $.close_popUp = function (){
+            var $popUp = $('#popUp-modal');
+            $popUp.attr('closeAble','yes');
+            $popUp.plainModal('close');
+        }
 
 		$.show_on_progress = function (message){	 				 	
         var $modal = $('#on-progress-modal');
