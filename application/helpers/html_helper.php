@@ -88,7 +88,7 @@
 
 
 
-			$text.='<div class="div-con"><input autocomplete="off" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.'" class="con-text"></input></div>';
+			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.'" class="con-text"></input></div>';
 
 			return $text;		
 
@@ -102,7 +102,7 @@
 
 
 
-			$text.='<div class="div-con" style="display:none;"><input autocomplete="off" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.'" class="con-text"></input></div>';
+			$text.='<div class="div-con" style="display:none;"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.'" class="con-text"></input></div>';
 
 			return $text;		
 
@@ -116,7 +116,7 @@
 
 
 
-			$text.='<div class="div-con"><input autocomplete="off" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.';display:inline-block;text-align:right;" class="con-currency"></input></div>';
+			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.';display:inline-block;text-align:right;" class="con-currency"></input></div>';
 
 			return $text;		
 
@@ -130,7 +130,7 @@
 
 
 
-			$text.='<div class="div-con"><input autocomplete="off" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.';text-align:right" class="con-number"></input></div>';
+			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.';text-align:right" class="con-number"></input></div>';
 
 			return $text;		
 
@@ -144,25 +144,63 @@
 
 
 
-			$text.='<div class="div-con"><input autocomplete="off" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.';display:inline-block;;text-align:right" class="con-percent"></input></div>';
+			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.';display:inline-block;;text-align:right" class="con-percent"></input></div>';
 
 			return $text;		
 
 		}
 
 
+		function input_option_lookUp($dataModel, $value, $caption, $label, $name, $width, $selectedValue="", $quickInsertUrl="", $getDataUrl=""){
+
+			$text='<div class="div-label"><label class="con-label">'.$label.'</label></div>';
+
+			$text.='<div class="div-con"><select id="'.$name.'" name="'.$name.'"  style="width: '.$width.'" class="con-select">';
+
+			// jika data kosong, isi data kosong dan keluar
+			if ($dataModel == NULL) {				
+				$text.='</select><span class="quick-add-ico"></span></div>';
+				return $text;
+			}
+
+			$text.='<option value="">'.$label.'</option>';
+
+			foreach ($dataModel as $model) {
+
+				if ($model->{$value} == $selectedValue) {
+
+					$text.='<option selected="selected" value="'.$model->{$value}.'">'.$model->{$caption}.'</option>';
+
+				}
+
+
+
+				else {
+
+					$text.='<option value="'.$model->{$value}.'">'.$model->{$caption}.'</option>';
+
+				}				
+
+			}
+
+			$text.='</select><div class="quick-add"><span class="quick-add-ico"></span></div></div>';
+
+			return $text;
+		}
 
 		function input_option($dataModel, $value, $caption, $label, $name, $width, $selectedValue=""){
 
 			$text='<div class="div-label"><label class="con-label">'.$label.'</label></div>';
 
-			$text.='<div class="div-con"><select name="'.$name.'"  style="width: '.$width.'" class="con-select">';
+			$text.='<div class="div-con"><select id="'.$name.'" name="'.$name.'"  style="width: '.$width.'" class="con-select">';
 
 			// jika data kosong, isi data kosong dan keluar
 			if ($dataModel == NULL) {				
 				$text.='</select></div>';
 				return $text;
 			}
+
+			$text.='<option value="">'.$label.'</option>';
 
 			foreach ($dataModel as $model) {
 
@@ -216,7 +254,7 @@
 
 		function link_button_style($label, $href, $width){
 
-			$text= '<a class="link-button-style" href="'.$href.'" style="width:'.$width.';">'.$label.'</a>';
+			$text= '<div class="div-link-button-style"><a class="link-button-style" href="'.$href.'" style="width:'.$width.';">'.$label.'</a></div>';
 
 			return $text;
 
@@ -226,7 +264,7 @@
 
 		function normal_button($id, $caption, $width){
 
-			$text= '<button id="'.$id.'" class="con-button" style="width:'.$width.'">'.$caption.'</button>';
+			$text= '<div class="div-button"><button id="'.$id.'" class="con-button" style="width:'.$width.'">'.$caption.'</button></div>';
 
 			return $text;
 

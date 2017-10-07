@@ -4,7 +4,7 @@
 
 		<?php echo input_text('NAMA','nama','100%');?>
 		
-		<?php echo input_option($dataJenisBarang,'kode', 'nama', 'JENIS','jenis','100%');?>
+		<?php echo input_option_lookUp($dataJenisBarang,'kode', 'nama', 'JENIS','jenis','90%');?>
 
 		<?php echo input_currency('HARGA BELI (Rp.)','harga_beli','100%');?>
 		<?php echo input_currency('HARGA JUAL (Rp.)','harga_jual','100%');?>
@@ -12,11 +12,12 @@
 		<?php echo input_number('QTY DISKON','qty_diskon','100%');?>
 		<?php echo input_number('QTY','qty','100%');?>		
 
-		<?php echo input_option($dataSatuanBarang,'kode', 'nama', 'SATUAN','satuan','100%');?>		
+		<?php echo input_option_lookUp($dataSatuanBarang,'kode', 'nama', 'SATUAN','satuan','90%');?>		
+		<?php echo input_number('QTY','qty','100%');?>		
 
-		<?php echo input_option($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','100%');?>
+		<?php echo input_option_lookUp($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','90%');?>
 		<!-- <?php echo submit_button('simpan','Simpan', '100%');?> -->
-		<?php echo link_button_style('daftar barang',site_url("barang_controller/"),'100%')?>
+		<?php echo link_button_style('daftar barang',site_url("barang_controller/"),'90%')?>
 	</form>	
 </div>
 

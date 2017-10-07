@@ -20,6 +20,7 @@ class barang_controller extends CI_Controller {
       $data['page'] = 'barang/barang_list';
       $data['daftarBarang'] = $this->barang_model->getAllBarang();
       $this->load->view('template_with_top_menu',$data);              
+      // echo $this->barang_model->getAllBarang();;
     }
 
     public function add(){
@@ -57,6 +58,28 @@ class barang_controller extends CI_Controller {
       else{
         echo "gagal";
       }
+    }
+
+    public function getBarangFormSearch(){
+      $data['dataJenisBarang'] = $this->jenis_barang_model->getAllJenisBarang();      
+      $data['dataSupplier'] = $this->supplier_model->getAllSupplier();      
+      $this->load->view('barang/barang_list_search',$data);       
+    }
+
+    public function filterBarang(){      
+        $data['daftarBarang'] = $this->barang_model->getAllBarang(
+        $this->input->post('kode'),          
+        $this->input->post('nama'),
+        $this->input->post('jenis'),
+        $this->input->post('supplier'));
+
+        
+        if ($data['daftarBarang']==NULL) {
+          echo '<div class="no-data">Data yang anda cari tidak ditemukan</div>';
+        }
+        else{
+          $this->load->view('barang/barang_list_item',$data);                
+        }        
     }
 
 }

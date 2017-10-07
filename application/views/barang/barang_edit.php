@@ -27,11 +27,8 @@
 </div>
 
 <script type="text/javascript">
-	$(document).ready(function(){                        
-		$('#add-menu').addClass('hide-menu');      
-      	$('#delete-menu').addClass('hide-menu');      
-      	$('#save-menu').addClass('show-menu');  
-      	$('#search-menu').addClass('hide-menu');                            
+	$(document).ready(function(){                        		
+      	$('#save-menu').removeClass().addClass('show-menu');  
 
 		$.plainModal_prepare();
        	$.currency_number_format();

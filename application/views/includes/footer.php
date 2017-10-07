@@ -91,7 +91,7 @@
             var $popUp = $('#popUp-modal');
             $popUp.plainModal({overlay: {fillColor: '#000', opacity: 0.5}, force: true});
             $popUp.html(htmlContent);            
-            $popUp.attr('closeAble','no');
+            $popUp.attr('closeAble','yes');
             $popUp.plainModal('open');
         }
 
@@ -118,7 +118,7 @@
         $modal.plainModal({overlay: {fillColor: '#000', opacity: 0.5}, force: true});       
         $('.my-plain-modal').attr('closeAble','yes');
         $modal.plainModal('open');                                  
-        setTimeout(function (){$.close_modal($modal);}, 2000);                  
+        setTimeout(function (){$.close_modal();}, 2000);                  
     }
 
     $.show_success = function (message){
@@ -127,12 +127,16 @@
         $modal.plainModal({overlay: {fillColor: '#000', opacity: 0.5}, force: true});       
         $('.my-plain-modal').attr('closeAble','yes');
         $modal.plainModal('open');                                  
-        setTimeout(function (){$.close_modal($modal);}, 1000);
+        setTimeout(function (){$.close_modal();}, 1000);
     }
 
-    $.close_modal = function ($me){                          
-        $me.attr('closeAble', 'yes');          
-        $me.plainModal('close');     
+    $.close_modal = function (){                          
+        $('.my-plain-modal').attr('closeAble', 'yes');          
+        // $('.my-plain-modal').plainModal('close');
+        setTimeout(function (){
+            $('.my-plain-modal').plainModal('close');
+        }, 190);
+             
     }
 
 

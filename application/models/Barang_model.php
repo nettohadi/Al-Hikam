@@ -21,7 +21,7 @@ class barang_model extends CI_Model
 
 
 
-	public function getAllBarang($nama="")
+	public function getAllBarang($kode="", $nama="", $kode_jenis="", $kode_supplier="" )
 
 	{
 
@@ -48,30 +48,57 @@ class barang_model extends CI_Model
               INNER JOIN satuan 
               on barang.kode_satuan = satuan.kode
               LEFT OUTER JOIN supplier 
-              on barang.kode_supplier = supplier.kode";
+              on barang.kode_supplier = supplier.kode";      
 
-      if ($nama!='') {
-        $query .= " WHERE barang.nama LIKE '%".$nama."%'";
+      $queryFilter='';
+
+      if ($kode!='' or $nama!='' or $kode_jenis!='' or $kode_supplier!='') {
+        $queryFilter.=" WHERE ";
       }
 
+      if ($kode!='') {
+        $queryFilter .= " barang.kode = '".$kode."'";        
+      }
+
+      if ($nama!='' and $kode=='') {
+        $queryFilter .= " barang.nama LIKE '%".$nama."%'";
+      }
+
+      if ($kode_jenis!='' and $kode=='') {
+
+        if($nama!=''){$queryFilter.=" AND ";}
+
+        $queryFilter .= " barang.kode_jenis = '".$kode_jenis."'";
+      }
+
+      if ($kode_supplier!='' and $kode=='') {
+
+        if($kode_jenis!=''){$queryFilter.=" AND ";}
+
+        $queryFilter .= " barang.kode_supplier = '".$kode_supplier."'";
+      }
+
+      $query.= $queryFilter;
+
       $query.= " ORDER BY tgl_create DESC";
+      
 
-
-        $dataSet = $this->db->query($query);
-
-
-
-        if ($dataSet->num_rows() > 0)
-
-            $dataBarang = $dataSet->result();
-
-        else
-
-            $dataBarang = NULL;
+      $dataSet = $this->db->query($query);
 
 
 
-        return $dataBarang;
+      if ($dataSet->num_rows() > 0)
+
+          $dataBarang = $dataSet->result();
+
+      else
+
+          $dataBarang = NULL;
+
+
+
+      return $dataBarang;      
+
 
 	}
 

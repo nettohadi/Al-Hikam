@@ -1,7 +1,7 @@
 <?php foreach($daftarBarang as $barang):?>                        
           <div class="item-row" id="<?php echo $barang->kode ?>" deleteUrl="<?php echo site_url('barang/delete.html')?>">
             <div class="item-row-nama">
-                <?php echo ucfirst($barang->nama) ?>
+                <?php echo $barang->nama ?>
             </div>
             <div class="item-row-kode-supplier-qty-jenis">
               <div class="item-col-kode-supplier">
@@ -73,3 +73,80 @@
         </div>    
             
 <?php endforeach; ?>    
+
+
+<script>
+
+$(document).ready(function()
+    {     
+
+      $('#search-menu').removeClass().addClass('show-menu');
+
+       $('#title-bar').html('BARANG');
+
+       $.plainModal_prepare();
+       $.currency_number_format();
+
+       $('.delete-menu').click(function(){
+        $('#' + $(this).attr('itemId')).toggleClass('selected-row');
+          $.show_confirm('yakin ingin menghapus data ini ?', 'hapus_ajax()', 'batal()');
+       });
+
+       $('#search-menu').click(function(){          
+          $html_content='';
+          $.show_on_progress();
+          $.get( '<?php echo site_url('Barang_controller/getBarangFormSearch')?>',function( data ) {
+              $.close_modal();                             
+              $.show_popUp(data);              
+          });
+          
+       });
+
+
+
+
+
+    });
+
+  function hapus(me){      
+      $.show_confirm('yakin ingin menghapus data ini ?', 'hapus_ajax()', 'batal()');
+  }
+
+
+
+  function hapus_ajax(){  
+
+      $.close_confirm();
+
+      var selectedRow = $('.selected-row'); 
+      //var url = $table.attr('deleteUrl');           
+      $.ajax({
+      url: selectedRow.attr('deleteUrl'),
+      method: "POST", 
+      data: { "kode": selectedRow.attr('id')},
+      dataType: "text"
+    }).done(function(data) {              
+      //$.show_success('berhasil menghapus');                   
+      setTimeout(function ()
+        {
+          selectedRow.hide('fast', function(){selectedRow.remove();});
+        }, 500);                                    
+    }).fail(function(data) {
+      $.show_error('gagal menghapus');
+    }); 
+  
+  }
+
+
+  function batal(){
+    $('.selected-row').removeClass('selected-row');
+    $.close_confirm();
+  }
+
+  function goTo(link){        
+        window.location.href = link + '.html';
+       }
+
+  
+
+</script>
