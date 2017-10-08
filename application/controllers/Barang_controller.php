@@ -82,4 +82,52 @@ class barang_controller extends CI_Controller {
         }        
     }
 
+    public function getQuickAddFormJenis($selectName){
+      $data['insertUrl']= site_url('Barang_controller/quickInsertJenis');
+      $data['getUrl']=site_url('Barang_controller/quickGetJenis');;
+      $data['selectId']=$selectName;
+      $this->load->view('shared_views/quick_add_form',$data);
+    }
+
+    public function quickInsertJenis(){
+      return $this->jenis_barang_model->insert();
+    }
+
+    public function quickGetJenis(){
+        $dataJenis = $this->jenis_barang_model->getAllJenisBarang();
+        echo print_html_select_options($dataJenis, 'kode','nama','Pilih Jenis Barang');
+    }
+
+    public function getQuickAddFormSatuan($selectName){
+      $data['insertUrl']= site_url('Barang_controller/quickInsertSatuan');
+      $data['getUrl']=site_url('Barang_controller/quickGetSatuan');;
+      $data['selectId']=$selectName;
+      $this->load->view('shared_views/quick_add_form',$data);
+    }
+
+    public function quickInsertSatuan(){
+      return $this->satuan_barang_model->insert();
+    }
+
+    public function quickGetSatuan(){
+        $dataSatuan = $this->satuan_barang_model->getAllSatuanBarang();
+        echo print_html_select_options($dataSatuan, 'kode','nama','Pilih Satuan Barang');
+    }
+
+    public function getQuickAddFormSupplier($selectName){
+      $data['insertUrl']= site_url('Barang_controller/quickInsertSupplier');
+      $data['getUrl']=site_url('Barang_controller/quickGetSupplier');;
+      $data['selectId']=$selectName;
+      $this->load->view('shared_views/quick_add_form',$data);
+    }
+
+    public function quickInsertSupplier(){
+      return $this->supplier_model->QuickInsert();
+    }
+
+    public function quickGetSupplier(){
+        $dataSupplier = $this->supplier_model->getAllSupplier();
+        echo print_html_select_options($dataSupplier, 'kode','nama','Pilih Supplier');
+    }
+
 }

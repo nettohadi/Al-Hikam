@@ -22,16 +22,32 @@ body {
   background-size: 100% 100%;
   width: 20px;
   height: 20px;
-  margin: auto;
+  /*margin: auto;*/
   display: block;
-  margin-top: 33%; }
+  /*margin-top: 33%;*/ }
+
+#menu {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 17px;
+  text-align: center;
+  width: 10%; }
+
+#save-menu {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  text-align: center;
+  width: 10%; }
 
 #title-bar {
   display: inline-block;
   color: white;
   display: inline-block;
   padding-top: 15px;
-  width: 75%;
+  width: 68%;
+  /*margin-left:5%;*/
+  /*margin-right: 5%;*/
   clear: both;
   font-size: 19px;
   min-height: inherit;
@@ -60,7 +76,8 @@ body {
   background-size: 100% 100%;
   width: 32px;
   height: 32px;
-  display: inline-block; }
+  display: inline-block;
+  float: right; }
 
 .delete-ico {
   background-image: url("../images/delete.png");
@@ -101,12 +118,6 @@ body {
 
 .edit-menu:hover, .delete-menu:hover, #add-menu:hover, .detail-menu:hover {
   background-color: lightgrey; }
-
-#save-menu, #menu {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 10px;
-  text-align: center; }
 
 #add-menu {
   width: 64px;
@@ -249,6 +260,14 @@ body {
 .div-label {
   margin-top: 10px; }
 
+.div-con {
+  /*background-color: red;*/
+  display: block;
+  min-height: 28px; }
+
+.div-select {
+  width: 90%; }
+
 tr {
   cursor: pointer; }
 
@@ -259,10 +278,10 @@ tr {
   padding: 3px;
   display: block;
   box-sizing: border-box;
-  border-top: 0px solid white;
-  border-left: 0px solid white;
-  border-right: 0px solid white;
-  border-bottom: 1px solid black;
+  border-top: 1px solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
   font-size: 16px; }
 
 .con-select {
@@ -270,12 +289,8 @@ tr {
   padding: 3px;
   display: inline-block;
   box-sizing: border-box;
-  /*	  border-top: 0px solid white;
-  	  border-left: 0px solid white;
-  	  border-right: 0px solid white;
-  	  border-bottom: 1px solid black;*/
   font-size: 16px;
-  /*float: left;		   */ }
+  float: left; }
 
 .form-container {
   width: 90%;
@@ -628,21 +643,16 @@ tr {
   font-size: 1em;
   display: inline-block;
   color: #FFF;
-  text-decoration: none;
-  /*padding-top: 5px;*/
-  padding-bottom: 5px;
   background-color: #009999;
   border-color: black;
-  /*box-shadow: inset 0 1px 0 #66bfff;*/
   margin-left: 5px;
-  /*margin-bottom: 10px;*/
-  /*font-weight: bold;*/
   text-align: center;
   vertical-align: center;
   border-radius: 2px;
   border: 1px solid transparent;
   cursor: pointer;
-  width: 23px; }
+  width: 23px;
+  height: 28px; }
 
 .quick-add-ico {
   background-image: url("../images/add_data.png");
@@ -654,3 +664,27 @@ tr {
   margin: auto;
   display: block;
   margin-top: 33%; }
+
+#quick-add-div {
+  background-color: white;
+  padding: 5px; }
+
+#footer-div {
+  min-height: 100px; }
+
+#btn_reset {
+  display: block;
+  height: 128px;
+  width: 100px;
+  margin: auto;
+  margin-top: 70px;
+  cursor: pointer; }
+
+.btn_reset_ico {
+  background-image: url("../images/reset.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+  width: 64px;
+  height: 64px;
+  display: block; }

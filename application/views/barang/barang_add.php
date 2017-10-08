@@ -4,7 +4,7 @@
 
 		<?php echo input_text('NAMA','nama','100%');?>
 		
-		<?php echo input_option_lookUp($dataJenisBarang,'kode', 'nama', 'JENIS','jenis','90%');?>
+		<?php echo input_option_with_QuickAdd($dataJenisBarang,'kode', 'nama', 'JENIS','jenis','100%','','Pilih Jenis Barang',site_url('Barang_controller/getQuickAddFormJenis'));?>
 
 		<?php echo input_currency('HARGA BELI (Rp.)','harga_beli','100%');?>
 		<?php echo input_currency('HARGA JUAL (Rp.)','harga_jual','100%');?>
@@ -12,10 +12,9 @@
 		<?php echo input_number('QTY DISKON','qty_diskon','100%');?>
 		<?php echo input_number('QTY','qty','100%');?>		
 
-		<?php echo input_option_lookUp($dataSatuanBarang,'kode', 'nama', 'SATUAN','satuan','90%');?>		
-		<?php echo input_number('QTY','qty','100%');?>		
+		<?php echo input_option_with_QuickAdd($dataSatuanBarang,'kode', 'nama', 'SATUAN','satuan','100%','','Pilih Satuan Barang',site_url('Barang_controller/getQuickAddFormSatuan'));?>				
 
-		<?php echo input_option_lookUp($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','90%');?>
+		<?php echo input_option_with_QuickAdd($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','100%','','Pilih Supplier',site_url('Barang_controller/getQuickAddFormSupplier'));?>
 		<!-- <?php echo submit_button('simpan','Simpan', '100%');?> -->
 		<?php echo link_button_style('daftar barang',site_url("barang_controller/"),'90%')?>
 	</form>	
@@ -26,7 +25,8 @@
 
 		$('#add-menu').addClass('hide-menu');      
       	$('#delete-menu').addClass('hide-menu');      
-      	$('#save-menu').addClass('show-menu');                              
+      	$('#save-menu').removeClass().addClass('show-menu');              
+      	$('#title-bar').html('TAMBAH BARANG');
 
 	   	$.plainModal_prepare();
        	$.currency_number_format();
@@ -49,5 +49,12 @@
 	            $.show_error('gagal menyimpan, terjadi kesalahan')
 	        });
 	    });
+
+	    $('.quick-add').click(function(){
+          $.get( $(this).attr('formUrl'),function( data ) {              
+              $.show_popUp(data);              
+          });
+       	});
+       	
 	});
 </script>

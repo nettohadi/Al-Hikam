@@ -43,9 +43,9 @@ class barang_model extends CI_Model
               supplier.kode AS kode_supplier, 
               supplier.nama AS nama_supplier                                   
               FROM barang 
-              INNER JOIN jenis_barang 
+              LEFT OUTER JOIN jenis_barang 
               on barang.kode_jenis = jenis_barang.kode
-              INNER JOIN satuan 
+              LEFT OUTER JOIN satuan 
               on barang.kode_satuan = satuan.kode
               LEFT OUTER JOIN supplier 
               on barang.kode_supplier = supplier.kode";      

@@ -1,3 +1,4 @@
+<div id="footer-div"></div>
 <div id='on-progress-modal' class="my-plain-modal on-progress" style="display: none;" closeAble="yes"></div>
 
 <div id='fail-modal' class="my-plain-modal on-fail" style="display: none;" closeAble="yes"></div>
@@ -138,6 +139,10 @@
         }, 190);
              
     }
+
+    function goTo(link){        
+        window.location.href = link + '.html';
+       }
 
 
 

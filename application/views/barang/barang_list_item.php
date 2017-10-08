@@ -103,9 +103,6 @@ $(document).ready(function()
        });
 
 
-
-
-
     });
 
   function hapus(me){      
@@ -143,9 +140,7 @@ $(document).ready(function()
     $.close_confirm();
   }
 
-  function goTo(link){        
-        window.location.href = link + '.html';
-       }
+  
 
   
 

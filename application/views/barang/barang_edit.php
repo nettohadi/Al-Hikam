@@ -4,9 +4,9 @@
 	
 		<?php echo input_text_hidden('KODE','kode','100%', $dataBarang[0]->kode);?>
 
-		<?php echo input_text('NAMA','nama','100%', $dataBarang[0]->nama);?>
-		
-		<?php echo input_option($dataJenisBarang,'kode', 'nama', 'JENIS','jenis','100%',$dataBarang[0]->kode_jenis);?>
+		<?php echo input_text('NAMA','nama','100%', $dataBarang[0]->nama);?>		
+
+		<?php echo input_option_with_QuickAdd($dataJenisBarang,'kode', 'nama', 'JENIS','jenis','100%',$dataBarang[0]->kode_jenis,'Pilih Jenis Barang',site_url('Barang_controller/getQuickAddFormJenis'));?>
 
 		<?php echo input_currency('HARGA BELI (Rp.)','harga_beli','100%', $dataBarang[0]->harga_beli);?>
 
@@ -18,9 +18,9 @@
 
 		<?php echo input_number('QTY','qty','100%', $dataBarang[0]->qty);?>	
 
-		<?php echo input_option($dataSatuanBarang,'kode', 'nama', 'SATUAN','satuan','100%',$dataBarang[0]->kode_satuan);?>		
+		<?php echo input_option_with_QuickAdd($dataSatuanBarang,'kode', 'nama', 'SATUAN','satuan','100%',$dataBarang[0]->kode_satuan,'Pilih Satuan Barang',site_url('Barang_controller/getQuickAddFormSatuan'));?>				
 
-		<?php echo input_option($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','100%', $dataBarang[0]->kode_supplier);?>		
+		<?php echo input_option_with_QuickAdd($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','100%',$dataBarang[0]->kode_supplier,'Pilih Supplier',site_url('Barang_controller/getQuickAddFormSupplier'));?>
 
 		<?php echo link_button_style('daftar barang',site_url("barang_controller/"),'100%')?>
 	</form>	
@@ -29,6 +29,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){                        		
       	$('#save-menu').removeClass().addClass('show-menu');  
+      	$('#title-bar').html('EDIT BARANG');
 
 		$.plainModal_prepare();
        	$.currency_number_format();
@@ -51,5 +52,12 @@
 	            $.show_error('gagal menyimpan, terjadi kesalahan')
 	        });
 	    });
+
+	    $('.quick-add').click(function(){
+          $.get( $(this).attr('formUrl'),function( data ) {              
+              $.show_popUp(data);              
+          });
+       	});
+       	
 	});
 </script>

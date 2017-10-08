@@ -10,3 +10,4 @@ $route['barang/edit/(:any).html'] = 'barang_controller/edit/$1';
 $route['barang/delete.html'] = 'barang_controller/delete';
 $route['barang/insert.html'] = 'barang_controller/insert';
 $route['barang/update.html'] = 'barang_controller/update';
+$route['reset'] = 'reset_all_controller/index';

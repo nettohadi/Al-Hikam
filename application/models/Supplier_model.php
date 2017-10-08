@@ -29,5 +29,11 @@ class supplier_model extends CI_model
         return $data;
 
 	}
-}
-?>
+
+		public function quickInsert(){
+		$nama = ucwords($this->input->post('quick-nama'));
+		$query = "INSERT INTO supplier(nama) 
+				  VALUES ('{$nama}')";
+		return $this->db->query($query);   						
+	}
+}?>

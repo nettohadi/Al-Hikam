@@ -151,19 +151,19 @@
 		}
 
 
-		function input_option_lookUp($dataModel, $value, $caption, $label, $name, $width, $selectedValue="", $quickInsertUrl="", $getDataUrl=""){
+		function input_option_with_quickAdd($dataModel, $value, $caption, $label, $name, $width, $selectedValue="", $defaultValue="", $formUrl=""){
 
 			$text='<div class="div-label"><label class="con-label">'.$label.'</label></div>';
 
-			$text.='<div class="div-con"><select id="'.$name.'" name="'.$name.'"  style="width: '.$width.'" class="con-select">';
+			$text.='<div class="div-con"><div class="div-select"><select id="'.$name.'" name="'.$name.'"  style="width: '.$width.'" class="con-select">';
 
 			// jika data kosong, isi data kosong dan keluar
 			if ($dataModel == NULL) {				
-				$text.='</select><span class="quick-add-ico"></span></div>';
+				$text.='</select></div><div class="quick-add" formUrl="'.$formUrl.'/'.$name.'"><span class="quick-add-ico"></span></div></div>';
 				return $text;
 			}
 
-			$text.='<option value="">'.$label.'</option>';
+			$text.='<option value="">'.$defaultValue.'</option>';
 
 			foreach ($dataModel as $model) {
 
@@ -183,12 +183,12 @@
 
 			}
 
-			$text.='</select><div class="quick-add"><span class="quick-add-ico"></span></div></div>';
+			$text.='</select></div><div class="quick-add" formUrl="'.$formUrl.'/'.$name.'"><span class="quick-add-ico"></span></div></div>';
 
 			return $text;
 		}
 
-		function input_option($dataModel, $value, $caption, $label, $name, $width, $selectedValue=""){
+		function input_option($dataModel, $value, $caption, $label, $name, $width, $selectedValue="",$defaultValue=""){
 
 			$text='<div class="div-label"><label class="con-label">'.$label.'</label></div>';
 
@@ -200,7 +200,7 @@
 				return $text;
 			}
 
-			$text.='<option value="">'.$label.'</option>';
+			$text.='<option value="">'.$defaultValue.'</option>';
 
 			foreach ($dataModel as $model) {
 
@@ -271,5 +271,13 @@
 		}
 
 		
+		function print_html_select_options($dataModel, $value, $caption, $defaultValue){
+			$text.='<option value="">'.$defaultValue.'</option>';
+			foreach ($dataModel as $model) {
+				$text.='<option value="'.$model->{$value}.'">'.$model->{$caption}.'</option>';
+			}
+
+			return $text;
+		}
 
 ?>
