@@ -1,5 +1,5 @@
-<div id="topNav">
-	<div id="menu" style="float: left;"><a href="<?php echo site_url('home.html');?>" title="data-barang" ><span class="home"></span></a></div>	
+<div id="topNav" class="nav">
+	<div id="menu" onClick="toggleBar(this)"></div>	
 	<div id="title-bar"></div>
 	<div id="search-menu" class="hide-menu" ><span class="search-ico"></span></div>	
 	<div id="search-input">
@@ -8,7 +8,9 @@
 		</form>
 	</div>
 	
-	<div id="save-menu" class="hide-menu" style="float: right;"><a href="#" title="add" ><span class="save-ico"></a></span></div>		
+	<div id="save-menu" class="hide-menu" style="float: right;"><span class="save-ico"></a></span></div>	
+	<div id="add-menu" class="hide-menu" onclick="goTo('<?php echo site_url('barang/add')?>')">
+  	<span class="add-ico"></span></div>	
 </div>
-<div style="margin-bottom: 60px"></div>
+<!-- <div style="margin-bottom: 60px"></div> -->
 

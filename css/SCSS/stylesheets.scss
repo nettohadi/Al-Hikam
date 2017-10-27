@@ -27,33 +27,244 @@ $font_color_no_data: $item_font_color;
 body{
 	background-color: #ddd; 
 	font-family: 'Varela Round', sans-serif;;
+	overflow: hidden;
 }
 
 #topNav {
-	width: 100%; 	
-	overflow: hidden;
-	background-color: $theme_color;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	z-index: 10;
 	height: 53px;
-	box-shadow: 1px 2px 2px #888888;
+	background-color: $theme_color;
+}
+#extra-nav{
+	height: 40px;	
+	background-color: #272d34;
 }
 
-.home{
-	@include set-icon($home_icon,20px);
-	/*margin: auto;*/
+#status-bar{
+	height: 25px;		
+	background-color: #272d34;
+}
+
+.nav{
+	width: 100%; 	
+	overflow: hidden;	
+	//position: fixed;
+	//top: 0px;
+	//left: 0px;
+	//z-index: 10;	
+	box-shadow: 1px 2px 2px #888888;	
+}
+
+#main-container{
 	display: block;
+	overflow: hidden;	
+	position: absolute;
+	top: 0px;
+	left:0px;
+	width: 100%;
+}
+
+#left-bar{
+  display: inline-block;
+  float: left;
+  width: 0px;
+  background-color:#272d34;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media only screen and (min-width:1281px) {
+	#left-bar{
+	  /*display: inline-block;*/
+	  /*float: left;*/
+	  width: 280px;
+	  /*background-color:#272d34;*/
+	  /*height: 100vh;*/
+	  /*overflow: hidden;*/
+	}	
+}
+
+#menu-bar-wrapper{
+	display: none;
+	width: 98%;
+}
+
+@media only screen and (min-width:1281px) {
+	#menu-bar-wrapper{
+		display: block;
+		width: 98%;
+	}
+}
+
+@media only screen and (min-width:1281px) {
+	#menu{
+		display: none;		
+	}
+}
+
+#right-bar{
+  display: inline-block;
+  /*float: right;*/
+  width: 100%;
+}
+
+@media only screen and (min-width:1281px) {
+	#right-bar{
+	  display: inline-block;
+	  /*float: right;*/
+	  //white-space: nowrap;
+	  width: calc(100% - 280px);
+	}
+}
+
+#list-container{			
+	max-width: 550px;
+	width: 95%;
+	margin: 10px auto auto auto;
+	background-color: transparent;
+}
+
+#content{
+	width: 100%;
+	overflow-y: scroll;
+	background-color: transparent;
+	height: calc(100vh - 53px);	
+}
+
+.menu-block{
+	text-align: left;
+	color: white;
+	padding-top: 10px;
+	border-top: 0.5px solid #000;
+	border-bottom: 0.5px solid #000;
+	box-shadow: inset 0 2px 0 -1px hsla(0,0%,100%,.1);
+	padding-bottom: 10px;	
+	display: block;	
+	height: 23px;
+}
+
+#current-user-info{
+	display: block;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+#menu-bar{
+	border-top: 0.5px solid #000;
+	border-bottom: 0.5px solid #000;
+	box-shadow: inset 0 2px 0 -1px hsla(0,0%,100%,.1);
+}
+
+
+#user-picture{
+	@include set-icon("no-image.jpg",60px);	
+	display: inline-block;
+	border-radius: 40px;
+	border: 0.5px solid lightgrey;
+	margin-right: auto;
+	margin-left: 10px;
+	margin-top:15px;
+	float: left;
+}
+
+#user-name-container{
+	display: inline-block;
+	width: 70%;
+	float: left;
+	margin-left: 10px;
+	margin-top:25px;
+}
+
+.menu-name{
+	display: inline-block;
+	float: left;
+}
+
+.master-data-ico{
+	@include set-icon("master-data.png",16px);	
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+.right-arrow-ico{
+	@include set-icon("right-arrow.png",12px);	
+	display: inline-block;
+	float: right;
+}
+
+.transaksi-ico{
+	@include set-icon("transaksi.png",16px);	
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+.laporan-ico{
+	@include set-icon("laporan.png",16px);	
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+.menu-child-ico{
+	display: inline-block;
+	float: left;
+	margin-right: 10px;		
+}
+
+.data-barang-ico{
+	@include set-icon("data-barang.png",16px);	
+}
+
+.data-satuan-ico{
+	@include set-icon("data-satuan.png",16px);	
+}
+
+.data-jenis-ico{
+	@include set-icon("data-jenis.png",16px);	
+}
+
+.data-supplier-ico{
+	@include set-icon("data-supplier.png",16px);	
+}
+
+.menu-child-wrapper{
+	display: none;
+	background-color: transparent;
+	color: white;	
+	//padding: 10px;
+	//height: 0px;
+}
+
+.menu-child{
+	display: block;
+	height: 30px;
+	width: 100%;
+	padding-left: 20px;
+	padding-top: 12px;
+}
+
+#user-name, #login-link{	
+	display: block;
+	text-align: left;	
+	color: white;
+}
+
+
+.home{
+	
 	/*margin-top: 33%;*/
 }
 
-#menu{
-	padding-left: 10px;
-	padding-right: 10px;
-  	padding-top: 17px;
-	text-align: center;
-	width: 10%;
+#menu {
+	@include set-icon($home_icon,20px);
+	/*margin: auto;*/
+	//display: inline-block;
+	float: left;
+	margin: 17px 0px 0px 10px;	
 }
 
 #save-menu{
@@ -77,6 +288,12 @@ body{
 	min-height: inherit;
 	overflow:hidden;
 	text-align: center;	
+}
+
+@media only screen and (min-width:1281px) {
+	#title-bar{
+		width: 95%;
+	}
 }
 
 #title-bar-text{
@@ -131,7 +348,7 @@ body{
 #add-menu{
 	width: 64px;
 	height: 64px;		
-	display: block;
+	//display: block;
 	z-index: 10;
 	position: fixed;
 	right: 15px;
@@ -196,20 +413,6 @@ body{
 
 #linksMenu{
 	width: 80%;
-}
-
-#mainContainer {	
-	overflow: auto;
-	display:flex;
-	margin-top: 40px;
-}
-
-#content{	
-	width: 100%;	
-	overflow: auto;
-	max-width: 550px;
-	margin: auto;
-	background-color: transparent;
 }
 
 .menu-box{
@@ -304,14 +507,15 @@ tr {
 }
 
 .con-text, .con-currency, .con-number,.con-percent{	    		  
-	  padding: 3px;		
+	  padding: 5px;		
 	  display: block;
 	  box-sizing: border-box;	
 	  border-top: 1px solid grey;
 	  border-left: 1px solid grey;
 	  border-right: 1px solid grey;
 	  border-bottom: 1px solid grey;
-	  font-size: 16px;
+	  /*border-radius: 5px;*/
+	  font-size: 20px;
 }
 
 
@@ -320,16 +524,26 @@ tr {
 	  padding: 3px;	
 	  display: inline-block;	  	  
 	  box-sizing: border-box;	  
-	  font-size: 16px;
+	  font-size: 20px;
 	  float: left;		   
 }
 
+.con-select-quickAdd{
+	  font-size: 15px;
+	  padding: 3px;	
+	  display: inline-block;	  	  
+	  box-sizing: border-box;	  
+	  font-size: 20px;
+	  float: left;		   	
+	  width: calc(100% - 35px);
+}
+
 .form-container{
-	width: 90%; 
-	max-width: 300px; 
-	margin: auto; 
+	max-width: 550px;
+	width: 90%; 	
+	margin: 10px auto auto auto; 
 	border: solid lightgrey 0.5px; 
-	padding: 15px;
+	padding: 0px 10px 10px 10px;
 	background-color: white;
 }
 
@@ -378,8 +592,8 @@ tr {
 }
 
 .on-progress{
-	background-color: white;
-	border: 2px solid black;
+	//background-color: white;
+	//border: 2px solid black;
 }
 .on-fail{
 	background-color: lightpink;
@@ -716,8 +930,8 @@ tr {
 	border-radius: 2px;
   	border: 1px solid transparent;
 	cursor: pointer;
-	width: 23px;
-	height: 28px;
+	width: 27px;
+	height: 32px;
 }
 
 .quick-add-ico{
@@ -732,10 +946,6 @@ tr {
 	padding: 5px;
 }
 
-#footer-div{
-	min-height: 100px;
-}
-
 #btn_reset{
 	display: block;
 	height: 128px;
@@ -747,4 +957,76 @@ tr {
 .btn_reset_ico{
 	@include set-icon('reset.png',64px);
 	display: block;
+}
+
+#div-keranjang{
+	display: block;
+	background-color: white;
+	max-height: calc(100vh - 137px);
+	overflow-y: scroll;
+	width: 100%;
+	border: solid;
+}
+
+.item-jual{
+	display:block;
+	background-color: white;
+	border: 1px solid black;
+	width: 94%;
+	margin: 5px auto 5px auto;
+	padding: 5px 5px 5px 5px;
+}
+
+.item-jual-row-nama-hapus{
+	display:block;
+	border-bottom: 1px solid black;
+}
+
+.item-jual-col-nama{
+	display:inline-block;
+}
+
+.item-jual-col-hapus{
+	display:inline-block;
+	float: right;
+}
+
+.item-jual-row-qty-harga{
+	display:block;
+	border-bottom: 1px solid black;
+}
+
+.item-jual-col-qty{
+	display:inline-block;
+}
+
+.item-jual-col-harga{
+	display:inline-block;
+	float: right;
+}
+
+.item-jual-row-subTotal{
+	display:block;
+}
+
+.div-con-plain{
+	box-sizing: border-box;
+	overflow: hidden;
+	max-width: 330px;
+	width: 100%;
+	margin: 3px 0px 0px 8px;
+}
+
+.con-lookUp{
+	display: inline-block;
+	float: left;
+	width: 80%;
+	font-size: 20px;	
+}
+
+#status-bar-info{
+	display: block;
+	color: white;
+	font-size: 20px;
+	margin: 3px 0px 0px 8px;	
 }

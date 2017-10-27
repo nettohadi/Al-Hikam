@@ -1,5 +1,4 @@
-<div class="form-container">
-	<h1>Tambah Data Barang</h1>	
+<div class="form-container">	
 	<form action="<?php echo site_url("barang/insert.html") ?>" method="post" class="form-ajax-post" enctype="multipart/form-data">
 
 		<?php echo input_text('NAMA','nama','100%');?>
@@ -16,16 +15,17 @@
 
 		<?php echo input_option_with_QuickAdd($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','100%','','Pilih Supplier',site_url('Barang_controller/getQuickAddFormSupplier'));?>
 		<!-- <?php echo submit_button('simpan','Simpan', '100%');?> -->
-		<?php echo link_button_style('daftar barang',site_url("barang_controller/"),'90%')?>
 	</form>	
+	<?php echo normal_button('link-daftar-barang', 'daftar barang', '90%',site_url("barang_controller/"))?>
 </div>
 
 <script type="text/javascript">
 	$(document).ready(function(){
 
-		$('#add-menu').addClass('hide-menu');      
-      	$('#delete-menu').addClass('hide-menu');      
-      	$('#save-menu').removeClass().addClass('show-menu');              
+		$('#add-menu').removeClass().addClass('hide-menu');      
+      	$('#delete-menu').removeClass().addClass('hide-menu');      
+      	$('#save-menu').removeClass().addClass('show-menu'); 
+      	$("#search-menu").removeClass().addClass('hide-menu');                   
       	$('#title-bar').html('TAMBAH BARANG');
 
 	   	$.plainModal_prepare();
@@ -38,7 +38,7 @@
 	        var data = $form.serialize();
 	        var url = $form.attr('action');
 
-	        $.show_on_progress('sedang menyimpan...');
+	        $.show_on_progress();
 
 	        $.post(url, data)
 	        .done(function(data){

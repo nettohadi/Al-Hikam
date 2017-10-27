@@ -1,5 +1,4 @@
-<div class="form-container">
-	<h1>Edit Data Barang</h1>	
+<div class="form-container">	
 	<form action="<?php echo site_url("barang/update.html") ?>" method="post" class="form-ajax-post" enctype="multipart/form-data">		
 	
 		<?php echo input_text_hidden('KODE','kode','100%', $dataBarang[0]->kode);?>
@@ -22,13 +21,15 @@
 
 		<?php echo input_option_with_QuickAdd($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','100%',$dataBarang[0]->kode_supplier,'Pilih Supplier',site_url('Barang_controller/getQuickAddFormSupplier'));?>
 
-		<?php echo link_button_style('daftar barang',site_url("barang_controller/"),'100%')?>
 	</form>	
+	<?php echo normal_button('link-daftar-barang', 'daftar barang', '90%',site_url("barang_controller/"))?>
 </div>
 
 <script type="text/javascript">
-	$(document).ready(function(){                        		
-      	$('#save-menu').removeClass().addClass('show-menu');  
+	$(document).ready(function(){  
+		$('#add-menu').removeClass().addClass('hide-menu');                       	
+      	$('#save-menu').removeClass().addClass('show-menu'); 
+      	$("#search-menu").removeClass().addClass('hide-menu');                    
       	$('#title-bar').html('EDIT BARANG');
 
 		$.plainModal_prepare();
@@ -41,7 +42,7 @@
 	        var data = $form.serialize();
 	        var url = $form.attr('action');
 
-	        $.show_on_progress('sedang menyimpan...');
+	        $.show_on_progress();
 
 	        $.post(url, data)
 	        .done(function(data){

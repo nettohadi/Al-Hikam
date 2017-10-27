@@ -1,4 +1,3 @@
-<div id="footer-div"></div>
 <div id='on-progress-modal' class="my-plain-modal on-progress" style="display: none;" closeAble="yes"></div>
 
 <div id='fail-modal' class="my-plain-modal on-fail" style="display: none;" closeAble="yes"></div>
@@ -20,7 +19,7 @@
 
 
 <!-- Script Section -->
-<script type="text/javascript">      
+<script type="text/javascript">    
 
     $.plainModal_prepare = function(){
         $('.my-plain-modal').on('plainmodalbeforeclose', function(event) {
@@ -104,7 +103,7 @@
 
 		$.show_on_progress = function (message){	 				 	
         var $modal = $('#on-progress-modal');
-        $modal.plainModal({overlay: {fillColor: '#000', opacity: 0.5}, force: true});                
+        $modal.plainModal({overlay: {fillColor: 'white', opacity: 0.5}, force: true});                
         $modal.html(message);                    
         $('.my-plain-modal').attr('closeAble','yes');
         $modal.plainModal('open');
@@ -132,17 +131,85 @@
     }
 
     $.close_modal = function (){                          
+
         $('.my-plain-modal').attr('closeAble', 'yes');          
-        // $('.my-plain-modal').plainModal('close');
         setTimeout(function (){
+            
             $('.my-plain-modal').plainModal('close');
+            // $('.my-plain-modal').hide();
+            // $('.plainmodal-overlay').hide();
         }, 190);
              
     }
 
-    function goTo(link){        
-        window.location.href = link + '.html';
-       }
+    function select_menu(me){
+        $('.menu-child').css('background-color','transparent');
+        $(me).css('background-color','#009999');
+        var link = $(me).attr('linkMenu');
+        $('#menu-bar-wrapper').fadeOut('fast');          
+        $('.close-left').animate({ width: '0px' }, 600, 'easeOutQuad', function(){
+            $('#main-container').css('white-space','normal');    
+            goTo(link,true);
+            $(this).removeClass().addClass('open-left');
+        });                    
+    }
+
+    function goTo(link,push=true){        
+        // window.location.href = link + '.html';
+          $.show_on_progress();
+          $('#content').html('');   
+          $.get( link + '?partial=true',function(page) {
+        
+              setTimeout(function (){
+                $.close_modal();
+
+                }, 50);
+
+             $('#content').html(page);   
+             if(push){history.pushState(null, '', link);}                      
+              window.scrollTo(0,0);
+              
+          });
+    }
+
+    window.addEventListener("popstate", function(e) {
+        goTo(location.href,false);
+    });
+
+    function toggleBar(me){
+        var menuBarWrapper = $('#menu-bar-wrapper');
+        var leftBar = $('#left-bar')
+        if (leftBar.attr('class') == 'open-left') {            
+            $('#main-container').css('white-space','nowrap');
+
+            leftBar.animate({ width: '280px' }, 600, 'easeOutQuad',function(){
+                menuBarWrapper.fadeIn('fast');                
+            });            
+            leftBar.removeClass().addClass('close-left');   
+        }else{              
+            menuBarWrapper.fadeOut('fast');          
+            leftBar.animate({ width: '0px' }, 600, 'easeOutQuad', function(){
+                $('#main-container').css('white-space','normal');    
+            });            
+            leftBar.removeClass().addClass('open-left');
+        }
+    }
+
+    function toggleSideBar(me){
+        var all_menu_child = $('.menu-child-wrapper');
+        var target_menu_child = '#' + $(me).attr('id') + '-child-wrapper';
+        all_menu_child.hide(600,'easeOutQuad');     
+        $('.open-child').not(target_menu_child)
+        .toggleClass('open-child');
+
+        $(target_menu_child).toggleClass('open-child');
+        $('.open-child').show(600,'easeOutQuad');
+        //menu_child.removeClass('open-child');        
+           
+       
+    }
+
+
 
 
 

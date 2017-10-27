@@ -53,7 +53,7 @@
                 </div>
               </div>
               <div class="item-col-edit-hapus">                
-                <div class="edit-menu" onclick="goTo('<?php echo site_url('barang/edit/').$barang->kode?>')">                  
+                <div class="edit-menu" onclick="goTo('<?php echo site_url('barang/edit/').$barang->kode?>.html')">                  
                   <span class="edit-ico">
                     
                   </span>
@@ -81,19 +81,23 @@ $(document).ready(function()
     {     
 
       $('#search-menu').removeClass().addClass('show-menu');
+      $('#add-menu').removeClass().addClass('show-menu');
+      $('#save-menu').removeClass().addClass('hide-menu');
 
        $('#title-bar').html('BARANG');
 
        $.plainModal_prepare();
        $.currency_number_format();
 
+       $('.delete-menu').unbind('click');
        $('.delete-menu').click(function(){
         $('#' + $(this).attr('itemId')).toggleClass('selected-row');
           $.show_confirm('yakin ingin menghapus data ini ?', 'hapus_ajax()', 'batal()');
        });
 
-       $('#search-menu').click(function(){          
-          $html_content='';
+
+       $('#search-menu').unbind('click');
+       $('#search-menu').click(function(){                    
           $.show_on_progress();
           $.get( '<?php echo site_url('Barang_controller/getBarangFormSearch')?>',function( data ) {
               $.close_modal();                             

@@ -5,8 +5,8 @@
 			<?php echo input_text_hidden('NO','no','100%');?>
 			<?php echo input_text('KODE','kode','100%');?>
 			<?php echo input_text('NAMA','nama','100%');?>
-			<?php echo input_option($dataJenisBarang,'kode', 'nama', 'JENIS','jenis','100%');?>
-			<?php echo input_option($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','100%');?>
+			<?php echo input_option($dataJenisBarang,'kode', 'nama', 'JENIS','jenis','100%','','Semua Jenis');?>
+			<?php echo input_option($dataSupplier,'kode', 'nama', 'SUPPLIER','supplier','100%','','Semua Supplier');?>
 			<?php echo submit_button('cari-barang','Cari Barang','100px');?>
 		</form>	
 	</div>

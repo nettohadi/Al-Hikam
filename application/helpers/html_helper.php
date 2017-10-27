@@ -116,7 +116,7 @@
 
 
 
-			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.';display:inline-block;text-align:right;" class="con-currency"></input></div>';
+			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="tel" style="width: '.$width.';display:inline-block;text-align:right;" class="con-currency"></input></div>';
 
 			return $text;		
 
@@ -130,7 +130,7 @@
 
 
 
-			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.';text-align:right" class="con-number"></input></div>';
+			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="tel" style="width: '.$width.';text-align:right" class="con-number"></input></div>';
 
 			return $text;		
 
@@ -144,7 +144,7 @@
 
 
 
-			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.';display:inline-block;;text-align:right" class="con-percent"></input></div>';
+			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="tel" style="width: '.$width.';display:inline-block;;text-align:right" class="con-percent"></input></div>';
 
 			return $text;		
 
@@ -155,7 +155,7 @@
 
 			$text='<div class="div-label"><label class="con-label">'.$label.'</label></div>';
 
-			$text.='<div class="div-con"><div class="div-select"><select id="'.$name.'" name="'.$name.'"  style="width: '.$width.'" class="con-select">';
+			$text.='<div class="div-con" style="width: '.$width.'" ><select id="'.$name.'" name="'.$name.'"  class="con-select-quickAdd">';
 
 			// jika data kosong, isi data kosong dan keluar
 			if ($dataModel == NULL) {				
@@ -183,7 +183,7 @@
 
 			}
 
-			$text.='</select></div><div class="quick-add" formUrl="'.$formUrl.'/'.$name.'"><span class="quick-add-ico"></span></div></div>';
+			$text.='</select><div class="quick-add" formUrl="'.$formUrl.'/'.$name.'"><span class="quick-add-ico"></span></div></div>';
 
 			return $text;
 		}
@@ -262,9 +262,9 @@
 
 
 
-		function normal_button($id, $caption, $width){
+		function normal_button($id, $caption, $width,$href=''){
 
-			$text= '<div class="div-button"><button id="'.$id.'" class="con-button" style="width:'.$width.'">'.$caption.'</button></div>';
+			$text= '<div class="div-button"><button id="'.$id.'" class="con-button" style="width:'.$width.'" onclick="goTo(\''.$href.'\')">'.$caption.'</button></div>';
 
 			return $text;
 
