@@ -272,20 +272,13 @@ class barang_model extends CI_Model
 
 
       if ($newUrutan == '01') {
-
-			$queryKode = "INSERT INTO tabel_kode (kode, urutan) VALUES ('{$kodeJenis}', '{$newUrutan}')";
-
-	  }
-
-	  else{
-
-			$queryKode = "UPDATE tabel_kode SET
-
-        	urutan='{$newUrutan}'  WHERE
-
-         	kode='{$kodeJenis}'";	
-
-	  }
+			   $queryKode = "INSERT INTO tabel_kode (kode, urutan) VALUES ('{$kodeJenis}', '{$newUrutan}')";
+	     }
+	     else{
+			     $queryKode = "UPDATE tabel_kode SET
+        	 urutan='{$newUrutan}'  WHERE
+         	  kode='{$kodeJenis}'";	
+	     }
 
 
 
@@ -316,5 +309,51 @@ class barang_model extends CI_Model
 		return $this->db->query($query);
 
 	}
+
+  public function barangCount($strFilter){
+    $query = "SELECT * FROM barang WHERE kode like '%".$strFilter."%' 
+              OR nama like '%".$strFilter."%'";    
+
+    $dataSet = $this->db->query($query);
+    $result = '';
+
+      if ($dataSet->num_rows() == 0){
+
+          $result = '0';
+      }
+
+      if ($dataSet->num_rows() == 1){
+
+          $result = '1';
+      }
+
+      if ($dataSet->num_rows() > 1){
+
+          $result = 'banyak';
+      }
+    return $result;  
+  }
+
+  public function getDataBarang($strFilter){
+    $query = "SELECT * FROM barang WHERE kode like '".$strFilter."%' 
+              OR nama like '%".$strFilter."%'";    
+
+    $dataSet = $this->db->query($query);
+
+    $data['jmlData'] = $dataSet->num_rows();
+
+
+    if ($dataSet->num_rows() > 0){
+
+        $data['dataBarang']= $dataSet->result();
+    }
+    else{
+
+        $data['dataBarang'] = NULL;
+    }
+
+
+    return $data;  
+  }
 
 }  

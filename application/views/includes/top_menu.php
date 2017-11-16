@@ -9,6 +9,9 @@
 	</div>
 	
 	<div id="save-menu" class="hide-menu" style="float: right;"><span class="save-ico"></a></span></div>	
+
+	<!-- <div id="jual-menu" class="hide-menu" style="float: right;"><span class="jual-ico"></a></span></div>	 -->
+
 	<div id="add-menu" class="hide-menu" onclick="goTo('<?php echo site_url('barang/add')?>')">
   	<span class="add-ico"></span></div>	
 </div>

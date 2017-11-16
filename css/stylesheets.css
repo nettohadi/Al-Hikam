@@ -20,7 +20,12 @@ body {
 .nav {
   width: 100%;
   overflow: hidden;
-  box-shadow: 1px 2px 2px #888888; }
+  /*	//position: fixed;
+  	//top: 0px;
+  	//left: 0px;
+  	//z-index: 10;	*/
+  /*box-shadow: 1px 2px 2px #888888;	*/
+  background-color: #009999; }
 
 #main-container {
   display: block;
@@ -60,7 +65,8 @@ body {
 #right-bar {
   display: inline-block;
   /*float: right;*/
-  width: 100%; }
+  width: 100%;
+  overflow: hidden; }
 
 @media only screen and (min-width: 1281px) {
   #right-bar {
@@ -75,7 +81,7 @@ body {
 
 #content {
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: transparent;
   height: calc(100vh - 53px); }
 
@@ -891,40 +897,43 @@ tr {
 
 #div-keranjang {
   display: block;
-  background-color: white;
-  max-height: calc(100vh - 137px);
-  overflow-y: scroll;
-  width: 100%;
-  border: solid; }
+  max-height: calc(100vh - 148px);
+  overflow-y: auto;
+  width: 100%; }
 
 .item-jual {
   display: block;
   background-color: white;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
+  box-shadow: 0px 3px 5px #888888;
   width: 94%;
   margin: 5px auto 5px auto;
   padding: 5px 5px 5px 5px; }
 
-.item-jual-row-nama-hapus {
+.row-item {
   display: block;
-  border-bottom: 1px solid black; }
+  border-bottom: 1px solid black;
+  overflow: hidden;
+  padding: 5px; }
 
-.item-jual-col-nama {
-  display: inline-block; }
+.col-item {
+  display: inline-block;
+  width: 50%; }
+
+.con-item-jual-text {
+  display: inline-block;
+  width: 30px; }
 
 .item-jual-col-hapus {
-  display: inline-block;
   float: right; }
 
-.item-jual-row-qty-harga {
-  display: block;
-  border-bottom: 1px solid black; }
+.item-jual-col-diskon {
+  float: left; }
 
-.item-jual-col-qty {
-  display: inline-block; }
+.item-jual-col-kode {
+  float: left; }
 
 .item-jual-col-harga {
-  display: inline-block;
   float: right; }
 
 .item-jual-row-subTotal {
@@ -948,3 +957,107 @@ tr {
   color: white;
   font-size: 20px;
   margin: 3px 0px 0px 8px; }
+
+#lookUp-overlay {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 9003;
+  opacity: 0.5; }
+
+#lookUp-parent {
+  /*position: absolute;
+  z-index: 9001;
+  left: 53%;
+  top: 60px;
+  margin-left: -164px;
+  min-width: 300px;
+  max-width: calc(100vw - 20px);*/ }
+
+#lookUp-container {
+  position: absolute;
+  display: block;
+  border: 3px solid #009999;
+  min-width: 300px;
+  max-width: calc(100vw - 20px);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #009999;
+  border-radius: 5px;
+  /*height: 350px;*/
+  overflow: auto;
+  z-index: 9004;
+  left: 53%;
+  top: 60px;
+  margin-left: -164px; }
+
+#lookUp-item-container {
+  display: block;
+  overflow-y: auto;
+  border: 1px solid white;
+  background-color: white;
+  max-height: 320px;
+  width: 99%; }
+
+.lookUp-title {
+  display: block;
+  padding: 5px;
+  background-color: #009999;
+  color: white;
+  text-align: left; }
+
+.lookUp-item:active {
+  background-color: lightgrey; }
+
+.lookUp-item {
+  display: block;
+  border-bottom: 1px solid black;
+  width: 95%;
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 5px;
+  padding: 3px;
+  margin: auto;
+  font-size: 15px; }
+
+.lookUp-row-item-nama {
+  display: block;
+  width: 100%;
+  clear: both;
+  font-size: 16px;
+  color: black;
+  text-align: left;
+  cursor: normal; }
+
+.lookUp-row-item-kode-harga {
+  display: block;
+  width: 100%;
+  clear: both;
+  overflow: hidden; }
+
+.lookUp-col-item-kode, .lookUp-col-item-harga {
+  display: inline-block;
+  float: left;
+  color: #6c6c6c;
+  font-size: 14px;
+  /*border: 1px solid black;*/ }
+
+.lookUp-col-item-harga {
+  padding-left: 10px; }
+
+.close-lookUp {
+  background-image: url("../images/close.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  float: right; }
+
+.info-bar {
+  color: white;
+  padding: 5px; }

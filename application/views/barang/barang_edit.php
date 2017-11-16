@@ -1,7 +1,7 @@
 <div class="form-container">	
 	<form action="<?php echo site_url("barang/update.html") ?>" method="post" class="form-ajax-post" enctype="multipart/form-data">		
 	
-		<?php echo input_text_hidden('KODE','kode','100%', $dataBarang[0]->kode);?>
+		<?php echo input_text_hidden('kode', $dataBarang[0]->kode);?>
 
 		<?php echo input_text('NAMA','nama','100%', $dataBarang[0]->nama);?>		
 

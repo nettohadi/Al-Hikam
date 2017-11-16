@@ -13,3 +13,4 @@ $route['barang/update.html'] = 'barang_controller/update';
 $route['reset'] = 'reset_all_controller/index';
 $route['jual'] = 'penjualan_controller/index';
 $route['jual/getItem/(:any)'] = 'Penjualan_controller/getItem/$1';
+$route['jual/barangCount/(:any)'] = 'Penjualan_controller/barangCount/$1';

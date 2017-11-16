@@ -96,13 +96,9 @@
 
 
 
-		function input_text_hidden($label, $name, $width, $value=""){
+		function input_text_hidden($name, $value="", $id=""){
 
-			$text='<div class="div-label" style="display:none;"><label class="con-label">'.$label.'</label></div>';
-
-
-
-			$text.='<div class="div-con" style="display:none;"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.'" class="con-text"></input></div>';
+			$text='<input autocomplete="off" id="'.$id.'" name="'.$name.'" value="'.$value.'" type="text" style="display:none;"></input>';
 
 			return $text;		
 
