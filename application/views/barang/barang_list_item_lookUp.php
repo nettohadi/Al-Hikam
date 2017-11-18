@@ -1,7 +1,7 @@
 <div id="lookUp-overlay"></div>	
 
 <div id="lookUp-container">
-	<div class="lookUp-title"><?php echo $jmlData ?> barang ditemukan<span class="close-lookUp"></span></div>
+	<div class="lookUp-title"><?php echo $jmlData ?> barang ditemukan<span class="close-lookUp x-modal-button"></span></div>
 	<div class="lookUp-title">Pilih salah satu</div>
 	<div id="lookUp-item-container">
 		<?php foreach($dataBarang as $barang):?>

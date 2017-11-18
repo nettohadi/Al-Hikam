@@ -82,13 +82,13 @@
 
 
 
-		function input_text($label, $name, $width, $value=""){
+		function input_text($label, $name, $width, $value="", $class=""){
 
 			$text='<div class="div-label"><label class="con-label">'.$label.'</label></div>';
 
 
 
-			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.'" class="con-text"></input></div>';
+			$text.='<div class="div-con"><input autocomplete="off" id="'.$name.'" name="'.$name.'" value="'.$value.'" type="text" style="width: '.$width.'" class="con-text '.$class.'"></input></div>';
 
 			return $text;		
 

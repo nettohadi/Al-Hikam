@@ -27,9 +27,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){  
-		$('#add-menu').removeClass().addClass('hide-menu');                       	
-      	$('#save-menu').removeClass().addClass('show-menu'); 
-      	$("#search-menu").removeClass().addClass('hide-menu');                    
+		$('.menu-item').hide();
+		$('#save-menu').show();
+
       	$('#title-bar').html('EDIT BARANG');
 
 		$.plainModal_prepare();

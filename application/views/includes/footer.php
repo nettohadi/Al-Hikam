@@ -157,9 +157,8 @@
     //<function untuk menutup semua popUp/>
     $.close_modal = function (){                          
 
-        $('.my-plain-modal').attr('closeAble', 'yes');          
-        setTimeout(function (){
-            
+        $('.my-plain-modal').attr('closeAble', 'yes');                  
+        setTimeout(function (){            
             $('.my-plain-modal').plainModal('close');
             // $('.my-plain-modal').hide();
             // $('.plainmodal-overlay').hide();

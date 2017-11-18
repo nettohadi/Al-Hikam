@@ -80,9 +80,8 @@
 $(document).ready(function()
     {     
 
-      $('#search-menu').removeClass().addClass('show-menu');
-      $('#add-menu').removeClass().addClass('show-menu');
-      $('#save-menu').removeClass().addClass('hide-menu');
+      $('.menu-item').hide();
+      $('#search-menu').show();
 
        $('#title-bar').html('BARANG');
 

@@ -19,11 +19,7 @@
     <!-- JS -->
     <script type='text/javascript' src="<?php echo site_url('js/jquery-1.12.4.min.js');?>"></script>
 
-    <script type='text/javascript' src="<?php echo site_url('js/jquery.dataTables.min.js');?>"></script>
-
     <script type='text/javascript' src="<?php echo site_url('js/dataTables.responsive.min.js');?>"></script>
-
-    <script type='text/javascript' src="<?php echo site_url('js/dataTables.scroller.min.js');?>"></script>
 
     <script type='text/javascript' src="<?php echo site_url('js/modernizr.custom.min.js');?>"></script>
     <script type='text/javascript' src="<?php echo site_url('js/popModal.min.js');?>"></script>
